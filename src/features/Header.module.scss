@@ -1,0 +1,66 @@
+@import "../styles/styles";
+
+.header {
+
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+  padding:20px 20px;
+
+  &__inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+
+      @include mobile-s {
+        grid-template-columns: 1fr auto;
+        font-size: 14px;
+      }
+
+  }
+
+  &__logo {
+    width: 40px;
+    height: auto;
+  }
+
+
+  &__nav {
+    justify-self: center;
+
+    &__list {
+      display: flex;
+      column-gap: 20px;
+
+    }
+
+    a {
+      transition-duration: 0.2s;
+      --bottomColor: white;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height:50px;
+
+      @include hover {
+        color:grey;
+
+        &:after {
+          --bottomColor: grey;
+        }
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top:calc(100% - 10px);
+        left:0;
+        height:1px;
+        width: 100%;
+        background-color: var(--bottomColor);
+        transition-duration: var(--long-duration);
+
+
+      }
+    }
+  }
+
+}
