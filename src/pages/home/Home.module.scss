@@ -3,30 +3,40 @@
 .home_section {
   max-width: 600px;
   box-shadow: rgba(80, 84, 89, 0.2) 0px 8px 24px;
-  min-height: 50vh;
+  min-height: 30vh;
   margin: 20px auto auto;
   border-radius: 15px;
   text-align: center;
 
 
-  @include tablet {
-    margin-inline: 20px;
+  @include mobile {
+    width: 90%;
   }
 
   &__title {
 
     font-size: 40px;
     border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 10px;
   }
 
   &_subtitle {
-    margin-top:5px;
+    margin-bottom: 10px;
   }
 
   &__form {
     display: flex;
     justify-content: center;
     column-gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+
+    @include mobile {
+      flex-direction: column;
+      row-gap: 20px;
+      padding: 0 15px;
+      align-items: center;
+    }
 
 
     & [type='submit'] {
@@ -34,13 +44,19 @@
       background: #22cfcf;
       transition-duration: var(--duration);
 
+
       @include hover {
         background: #158b8b;
       }
+
     }
 
     & [type='text'] {
       padding:5px 10px;
     }
+    @include mobile {
+
+    }
+
   }
 }
