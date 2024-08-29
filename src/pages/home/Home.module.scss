@@ -1,0 +1,46 @@
+@import '../../styles/styles';
+
+.home_section {
+  max-width: 600px;
+  box-shadow: rgba(80, 84, 89, 0.2) 0px 8px 24px;
+  min-height: 50vh;
+  margin: 20px auto auto;
+  border-radius: 15px;
+  text-align: center;
+
+
+  @include tablet {
+    margin-inline: 20px;
+  }
+
+  &__title {
+
+    font-size: 40px;
+    border-bottom: 1px solid #d6d6d6;
+  }
+
+  &_subtitle {
+    margin-top:5px;
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+
+
+    & [type='submit'] {
+      border: none;
+      background: #22cfcf;
+      transition-duration: var(--duration);
+
+      @include hover {
+        background: #158b8b;
+      }
+    }
+
+    & [type='text'] {
+      padding:5px 10px;
+    }
+  }
+}

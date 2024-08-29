@@ -24,7 +24,7 @@ const ProductList:FC<ProductListProps> = ({className, sortType, querySortSearch}
   ), [sortType, data])
 
   const sortedAndSearched = useMemo(
-    () => [... sortedProducts].filter(product => product.name.toLocaleLowerCase().startsWith(querySortSearch.toLocaleLowerCase()))
+    () => [... sortedProducts].filter(product => product.name.toLocaleLowerCase().includes(querySortSearch.toLocaleLowerCase()))
     , [sortedProducts, querySortSearch]
   )
 

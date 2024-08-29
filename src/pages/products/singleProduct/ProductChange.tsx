@@ -42,7 +42,7 @@ const ProductChange = () => {
       rating: Number(target.rating.value),
       price: Number(target.price.value),
       ['reviews-count']: Number(target['reviews-count'].value),
-      ['image-url']: product["image-url"] as string
+      ['image-url']: target['image-url'].value as string,
     };
 
     if (!formChanged) {
@@ -60,27 +60,32 @@ const ProductChange = () => {
     <Form className={cl.form} onSubmit={changeProduct} onChange={handleAnyFieldChange}>
       <label className={cl.form__label}>
         Название
-        <input defaultValue={product.name} name='name' required/>
+        <input defaultValue={product.name} name='name' required />
       </label>
 
       <label className={cl.form__label}>
         Цена
-        <input defaultValue={product.price} name='price' required/>
+        <input defaultValue={product.price} name='price' required />
       </label>
 
       <label className={cl.form__label}>
         Код(идентификатор)
-        <input defaultValue={product.code} name='code' required/>
+        <input defaultValue={product.code} name='code' required />
       </label>
 
       <label className={cl.form__label}>
         Рейтинг
-        <input defaultValue={product.rating} name='rating' required/>
+        <input defaultValue={product.rating} name='rating' required />
       </label>
 
       <label className={cl.form__label}>
         Количество отзывов
-        <input defaultValue={product["reviews-count"]} name='reviews-count' required/>
+        <input defaultValue={product["reviews-count"]} name='reviews-count' required />
+      </label>
+
+      <label className={cl.form__label}>
+        Количество отзывов
+        <input defaultValue={product["image-url"]} name='image-url' required />
       </label>
 
       <div className={clsx(cl.form__error, showError && cl.form__error_active)}>Форма не изменилась</div>

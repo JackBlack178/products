@@ -17,7 +17,7 @@ const Product:FC<ProductProps> = ({className, id, name, image_url, review_count,
 
 
   return (
-    <Link to={`${id}`}>
+    <Link to={`${id}`} className={cl.product__wrapper}>
       <article className={clsx(cl.product, className)}>
         <header className={cl.product__header}>
           <h3 className={cl.product__header__title}>{name}</h3>

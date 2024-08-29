@@ -21,7 +21,7 @@ const ProductMain = () => {
 
 
 
-  const [sortType, setSortType] = useState(()=>{
+  const [sortType, setSortType] = useState<{value:'worst' | 'best', label:string}>(()=>{
     const sortSearchParam = searchParams.get('sort') as string
     const sort = sortSearchParam === 'best' || sortSearchParam === 'worst' ? sortSearchParam : 'best'
     return options.find(el => el.value === sort)
@@ -39,8 +39,6 @@ const ProductMain = () => {
     setSortType(options[0])
 
   }
-
-
 
 
   return (
