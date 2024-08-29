@@ -12,7 +12,7 @@ interface ProductListProps {
 
 const ProductList:FC<ProductListProps> = ({className}) => {
 
-  const {data, isLoading, error} = useGetAllProductsQuery(undefined)
+  const {data, isLoading} = useGetAllProductsQuery(undefined)
   const products: Products = data || []
 
 

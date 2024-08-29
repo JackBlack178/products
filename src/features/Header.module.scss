@@ -34,7 +34,7 @@
 
     a {
       transition-duration: 0.2s;
-      --bottomColor: white;
+      --bottomColor: #000000;
       position: relative;
       display: inline-flex;
       align-items: center;
@@ -49,22 +49,34 @@
       }
 
       &:after {
+        transition: all 0.2s ease;
         content: '';
         position: absolute;
         top:calc(100% - 10px);
         left:0;
         height:1px;
         width: 100%;
+        opacity: 0;
         background-color: var(--bottomColor);
         transition-duration: var(--long-duration);
-
-
       }
+
+    }
+  }
+
+
+  &__nav__link {
+    color: #494747;
+  }
+
+  &__active_link {
+    position: relative;
+
+
+    &:after {
+      opacity: 1 !important;
     }
   }
 
 }
 
-a.active {
-  color:green;
-}

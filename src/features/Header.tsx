@@ -1,6 +1,7 @@
 import cl from './Header.module.scss';
 import { Logo } from "../components/simple/Logo.tsx";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import clsx from "clsx";
 
 const Header = () => {
   return (
@@ -11,16 +12,20 @@ const Header = () => {
           <ul className={cl.header__nav__list}>
             <li className={cl.header__nav__item}>
 
-              <Link to='/' className={cl.header__nav__link}>
+              <NavLink to='/' className={({ isActive }) =>
+                isActive ? clsx(cl.header__active_link, cl.header__nav__link) : cl.header__nav__link
+              } >
                 Главная
-              </Link>
+              </NavLink>
             </li>
 
             <li className={cl.header__nav__item}>
 
-              <Link to='/products' className={cl.header__nav__link}>
+              <NavLink to='/products' className={({ isActive }) =>
+                isActive ? clsx(cl.header__active_link, cl.header__nav__link) : cl.header__nav__link
+              }>
                 Товары
-              </Link>
+              </NavLink>
             </li>
 
 
