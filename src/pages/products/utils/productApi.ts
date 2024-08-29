@@ -1,5 +1,6 @@
 import { BaseQueryApi, createApi, FetchArgs, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { rootReducer } from "../../../store/rootReducer.ts";
+import { store } from "../../../store";
 const baseUrl = import.meta.env.VITE_BASE_URL as string
 
 export interface IProduct {
@@ -25,7 +26,7 @@ const delayedFetchBaseQuery = async (
     oneTime = false;
   }
 
-  return fetchBaseQuery({ baseUrl: "http://localhost:3000/" })(
+  return fetchBaseQuery({ baseUrl: baseUrl })(
     args,
     api,
     extraOptions,
@@ -43,10 +44,39 @@ export const productApi = createApi({
       query: () => `products`,
       providesTags: ['Products']
     }),
+    getProduct: builder.query<IProduct, string>({
+      query: (id) => `products/${id}`,
+      providesTags: ['Products']
+    }),
+    changeProduct: builder.mutation<void, IProduct>({
+      query: ({id, ...patch}) => ({
+        url: `products/${id}`,
+        method: "PUT",
+        body: patch
+      }),
+      invalidatesTags: ['Products']
+    }),
+    newProduct: builder.mutation<IProduct, Omit<IProduct, 'id'>>({
+      query: (data) => ({
+        url: `products`,
+        method: "POST",
+        body: data
+      }),
+      invalidatesTags: ['Products']
+    }),
+
   }),
 
 })
 
 rootReducer.inject(productApi)
 
-export const {useGetAllProductsQuery} = productApi
+export const singleProductLoader = async(id:string) => {
+  store.dispatch(productApi.util.prefetch('getProduct', id, {}))
+}
+
+export const productListLoader = () => {
+  store.dispatch(productApi.util.prefetch('getAllProducts', undefined, {}))
+  return null
+}
+

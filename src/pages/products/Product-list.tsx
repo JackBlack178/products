@@ -1,20 +1,32 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import cl from './Product-list.module.scss'
 import clsx from "clsx";
-import { Products, useGetAllProductsQuery } from "./utils/productApi.ts";
+import { productApi } from "./utils/productApi.ts";
 import { Product } from "./Product.tsx";
 import { Loading } from "../../components/simple/Loading.tsx";
+import { Link } from "react-router-dom";
+
 
 
 interface ProductListProps {
   className?:string,
+  sortType: 'best' | 'worst',
+  querySortSearch:string,
 }
 
-const ProductList:FC<ProductListProps> = ({className}) => {
+const ProductList:FC<ProductListProps> = ({className, sortType, querySortSearch}) => {
 
-  const {data, isLoading} = useGetAllProductsQuery(undefined)
-  const products: Products = data || []
+  const {data, isLoading} = productApi.useGetAllProductsQuery(undefined)
 
+
+  const sortedProducts = useMemo(
+    () => [... data || []].sort((a,b) => sortType === 'best' ? a.rating - b.rating : b.rating - a.rating,
+  ), [sortType, data])
+
+  const sortedAndSearched = useMemo(
+    () => [... sortedProducts].filter(product => product.name.toLocaleLowerCase().startsWith(querySortSearch.toLocaleLowerCase()))
+    , [sortedProducts, querySortSearch]
+  )
 
   return (
     <div className={clsx(cl.product_list, className)}>
@@ -22,15 +34,15 @@ const ProductList:FC<ProductListProps> = ({className}) => {
         <h2 className={cl.product_list__header__title}>
           Каталог товаров
         </h2>
-        <button className={cl.product_list__header__button}>
+        <Link to='new' className={cl.product_list__header__button}>
           Добавить товар
-        </button>
+        </Link>
       </header>
 
       {isLoading ? <Loading /> :
 
         <div className={cl.product_list__body}>
-          {products.map(product =>
+          {sortedAndSearched.map(product =>
 
             <Product
               key={product.id}
@@ -52,5 +64,7 @@ const ProductList:FC<ProductListProps> = ({className}) => {
     </div>
   );
 };
+
+
 
 export { ProductList };

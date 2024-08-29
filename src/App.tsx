@@ -1,7 +1,4 @@
 import {RouterProvider } from "react-router-dom";
-
-import { Header } from "./features/Header.tsx";
-
 import {Provider} from "react-redux";
 import { store } from "./store";
 import { router } from "./utils/Router.tsx";

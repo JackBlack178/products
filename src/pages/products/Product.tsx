@@ -13,11 +13,11 @@ interface ProductProps extends Partial<IProduct>{
 
 
 
-const Product:FC<ProductProps> = ({className, name, image_url, review_count, rating, price}) => {
+const Product:FC<ProductProps> = ({className, id, name, image_url, review_count, rating, price}) => {
 
 
   return (
-    <Link to='#'>
+    <Link to={`${id}`}>
       <article className={clsx(cl.product, className)}>
         <header className={cl.product__header}>
           <h3 className={cl.product__header__title}>{name}</h3>
