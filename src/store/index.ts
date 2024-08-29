@@ -1,11 +1,13 @@
 import { configureStore, createSelector } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 import { productApi } from "../pages/products/utils/productApi.ts";
+import { rootReducer } from "./rootReducer.ts";
+
 
 export const store = configureStore({
-  reducer: {
-    [productApi.reducerPath]: productApi.reducer
-  },
+  reducer: rootReducer,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productApi.middleware)
 

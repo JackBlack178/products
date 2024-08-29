@@ -3,6 +3,7 @@ import cl from './Product-list.module.scss'
 import clsx from "clsx";
 import { Products, useGetAllProductsQuery } from "./utils/productApi.ts";
 import { Product } from "./Product.tsx";
+import { Loading } from "../../components/simple/Loading.tsx";
 
 
 interface ProductListProps {
@@ -19,6 +20,7 @@ const ProductList:FC<ProductListProps> = ({className}) => {
 
 
 
+
   return (
     <div className={clsx(cl.product_list, className)}>
       <header className={cl.product_list__header}>
@@ -29,23 +31,29 @@ const ProductList:FC<ProductListProps> = ({className}) => {
           Добавить товар
         </button>
       </header>
-      <div className={cl.product_list__body}>
-        {products.map(product =>
 
-        <Product
-          key={product.id}
-          id={product.id}
-          name={product.name}
-          code={product.code}
-          rating={product.rating}
-          price={product.price}
-          image_url={product["image-url"]}
-          review_count={product["reviews-count"]}
-        >
-        </Product>
+      {isLoading ? <Loading /> :
 
-        )}
-      </div>
+        <div className={cl.product_list__body}>
+          {products.map(product =>
+
+            <Product
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              code={product.code}
+              rating={product.rating}
+              price={product.price}
+              image_url={product["image-url"]}
+              review_count={product["reviews-count"]}
+            >
+            </Product>
+          )}
+        </div>
+
+      }
+
+
     </div>
   );
 };
