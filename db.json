@@ -1,3 +1,53 @@
 {
+    "products" : [
+      {
+        "id": "1",
+        "name": "Черный кофе",
+        "price": 125,
+        "code": 45647,
+        "image-url": "https://belche.ru/wp-content/uploads/2020/11/coffee.jpg",
+        "rating" : 4.7,
+        "reviews-count": 0
+      },
 
+      {
+        "id": "2",
+        "name": "Латте",
+        "price": 150,
+        "code": 2345,
+        "image-url": "https://teatraditions.ru/image/catalog/stati/coffe_2/1.jpg",
+        "rating" : 4.8,
+        "reviews-count": 1
+      },
+
+      {
+        "id": "3",
+        "name": "Пончик",
+        "price": 100,
+        "code": 96789,
+        "image-url": "https://img.razrisyika.ru/kart/114/1200/455649-ponchiki-i-sladosti-2.jpg",
+        "rating" : 4.5,
+        "reviews-count": 1
+      },
+
+      {
+        "id": "4",
+        "name": "Сыр",
+        "price": 220,
+        "code": 3465,
+        "image-url": "https://i.pinimg.com/originals/ad/02/98/ad02987b2d8e8a1dd265ce8c95e54292.jpg",
+        "rating" : 4.7,
+        "reviews-count": 2
+      },
+
+      {
+        "id": "5",
+        "name": "Йогурт чудо",
+        "price": 80,
+        "code": 23457,
+        "image-url": "https://img.razrisyika.ru/kart/22/1200/84897-yogurt-1.jpg",
+        "rating" : 4.7,
+        "reviews-count": 1
+      }
+    ]
 }

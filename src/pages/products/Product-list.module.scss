@@ -1,0 +1,49 @@
+@import "../../styles/styles";
+
+.product_list {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 50px;
+    row-gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+    &__title {
+      margin:0;
+    }
+    &__button {
+
+      font-size: 18px;
+
+      background-color: white;
+      border: 1px solid rgb(204, 204, 204);
+      border-radius: 4px;
+      padding: 5px 10px;
+      transition-duration: var(--duration);
+
+      @include hover {
+        background-color: #e1e0e0;
+      }
+    }
+
+  }
+
+  &__body {
+      display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap:30px;
+    justify-items: center;
+
+    @include desktop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}

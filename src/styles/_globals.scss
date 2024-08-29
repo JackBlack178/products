@@ -1,11 +1,14 @@
 body {
-  font-size: 16px;
+  font-size: 18px;
 
 }
 
 .container {
-  max-width: 1220px;
-  padding-inline:10px;
+  max-width: 1240px;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 ul {
@@ -16,4 +19,12 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 30px !important;
 }

@@ -1,0 +1,62 @@
+@import "../../styles/styles";
+
+.product {
+  max-width: 600px;
+  padding: 20px 30px;
+  border-radius:10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap:30px;
+  transition-duration: var(--duration);
+
+  @include hover {
+    scale: 1.03;
+    opacity: 0.8;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__rating {
+      display: flex;
+      align-items: center;
+
+      &_icon {
+        width: 25px;
+        height: auto;
+      }
+    }
+
+  }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+
+  }
+
+  &__footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+  }
+
+  &__price {
+    text-shadow: 1px 1px 0px black;
+  }
+
+  &__reviews {
+      justify-self: end;
+  }
+
+}
